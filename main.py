@@ -1,9 +1,9 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
 def load_text_from_file(path):
     with open(path, "r", encoding="utf-8") as file:
         return file.read()
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
 def get_keywords(text, top_n=10):
 
@@ -36,12 +36,12 @@ def display_results(resume_text, job_description_text):
     similarity_score = get_similarity(resume_text, job_description_text)
 
     print("Resume vs Job Description Similarity Score:", similarity_score)
-    print("\nTop Keywords in Resume:", resume_keywords)
-    print("\nTop Keywords in Job Description:", job_description_keywords)
+    print("\nTop skills in Resume:", resume_keywords)
+    print("\nTop skills in Job Description:", job_description_keywords)
 
     missing_keywords = [word for word in job_description_keywords if word not in resume_keywords]
 
-    print("\nMissing Keywords from Resume:", missing_keywords)
+    print("\nMissing skills from Resume:", missing_keywords)
 
 resume_text = load_text_from_file('resume.txt')
 job_description_text = load_text_from_file('job_description.txt')
